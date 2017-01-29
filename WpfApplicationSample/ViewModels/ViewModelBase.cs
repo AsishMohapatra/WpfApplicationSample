@@ -4,9 +4,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WpfApplicationSample.ViewModels.Commands;
+using WpfCommands.ViewModels.Commands;
 
-namespace WpfApplicationSample.ViewModels
+namespace WpfCommands.ViewModels
 {
     public class ViewModelBase
     {

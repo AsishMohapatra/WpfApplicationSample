@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApplicationSample", "WpfApplicationSample\WpfApplicationSample.csproj", "{640746C6-BDEA-4F48-9372-8C13D3774D33}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfCommands", "WpfApplicationSample\WpfCommands.csproj", "{640746C6-BDEA-4F48-9372-8C13D3774D33}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
