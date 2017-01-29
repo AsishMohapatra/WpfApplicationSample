@@ -1,29 +1,57 @@
 ﻿<Window x:Class="WpfCommands.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:vmodel="clr-namespace:WpfCommands.ViewModels"
         xmlns:cmd="clr-namespace:WpfCommands.ViewModels.Commands"
+        xmlns:local="clr-namespace:WpfApplicationSample"
         Title="MainWindow" Height="350" Width="525">
     
     <Window.Resources>
         <vmodel:ViewModelBase x:Key="viewmodel"></vmodel:ViewModelBase>
         <vmodel:Person x:Key="person"></vmodel:Person>
+        <sys:String x:Key="emailRegex">^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@
+        [a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]
+        *[a-zA-Z]$</sys:String>
     </Window.Resources>
     <Grid DataContext="{Binding Source={StaticResource person}}">
-        <StackPanel  HorizontalAlignment="Left">
-            <TextBlock Text="Enter User Name : "></TextBlock>
-            <TextBox Text="{Binding Name, Mode=TwoWay}"></TextBox>
-            <StackPanel Orientation="Horizontal">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Border CornerRadius="6"
+                BorderBrush="Gray"
+                BorderThickness="5"
+                Padding="8">
+            <StackPanel Grid.Column="0" >
+                <TextBlock Text="Enter User Name : "></TextBlock>
+                <TextBox >
+                    <TextBox.Text>
+                        <Binding Path="Name">
+                            <Binding.ValidationRules>
+                                <local:RegexValidationRule Pattern="{StaticResource emailRegex}"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
                 <Button  Content="Commmand with no parameter"
             Command="{Binding  Source={StaticResource viewmodel}, Path=SimpleButtonClickCommand}"></Button>
-                
-            </StackPanel>
-            
-            <Button  Content="Commmand With Parameter"
+                <Button  Content="Commmand With Parameter"
             Command="{Binding  Source={StaticResource viewmodel}, Path=SimpleButtonClickCommandWithParam}"
                      CommandParameter="{Binding Name}"></Button>
-        </StackPanel>
-        
-        
+
+            </StackPanel>
+        </Border>
+        <Border CornerRadius="6" Grid.Column="1"
+                BorderBrush="Gray"
+                BorderThickness="5"
+                Padding="8">
+            <StackPanel  >
+                <TextBlock Text="Enter Email Id"></TextBlock>
+                <TextBox x:Name="txtEMail" Text="{Binding Name, Mode=TwoWay}">
+                </TextBox>
+            </StackPanel>
+        </Border>
+
     </Grid>
 </Window>

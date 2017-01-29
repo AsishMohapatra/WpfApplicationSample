@@ -1,0 +1,20 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:WpfApplicationSample.Validation">
+    <BitmapImage x:Key="ErrorImage" UriSource="Assets/logo.ico"></BitmapImage>
+
+    <ControlTemplate x:Key="TextBoxErrorTemplate" TargetType="Control">
+        <Grid ClipToBounds="False" >
+            <Image HorizontalAlignment="Right" VerticalAlignment="Top" 
+               Width="16" Height="16" Margin="0,-8,-8,0" 
+               Source="{StaticResource ErrorImage}" 
+               ToolTip="{Binding ElementName=adornedElement, 
+                         Path=AdornedElement.(Validation.Errors), 
+                         Converter={local:ValidationErrorsToStringConverter}}"/>
+            <Border BorderBrush="Red" BorderThickness="1" Margin="-1">
+                <AdornedElementPlaceholder Name="adornedElement" />
+            </Border>
+        </Grid>
+    </ControlTemplate>
+
+</ResourceDictionary>
